@@ -1,0 +1,71 @@
+This slide is giving a **deeper insight** about accumulation points. Let me break it down.
+
+---
+
+## The Key Statement
+
+> "A point from A in each punctured neighbourhood means **infinitely many** points from A in each punctured neighbourhood"
+
+### What does this mean?
+
+If even **one** point from A exists near x₀ in every zone you draw — then actually **infinitely many** points exist there.
+
+**Why?** Because if there's one point x₁ near x₀, draw a smaller zone. Now there must be another point x₂ inside that smaller zone. Draw even smaller — another point x₃. This never stops. So you always get infinitely many.
+
+---
+
+## Reading the Number Line
+
+The diagram shows x₀ at the center with points from A approaching it:
+
+**From the right:** x₁, x₂, x₃ getting closer and closer to x₀
+
+**From the left:** x₄, x₅ getting closer and closer to x₀
+
+These points never reach x₀ but keep squeezing in from both sides — **infinitely many of them.**
+
+---
+
+## The Yellow Box — The Big Conclusion
+
+```
+lim xₙ = x₀,   xₙ ∈ A for all n ∈ N
+n→∞
+```
+
+This says you can build a **sequence** x₁, x₂, x₃, x₄ ... of points from A that converges to x₀.
+
+This is the connection between:
+- **Accumulation points** (geometry — points clustering near x₀)
+- **Sequences and limits** (algebra — a sequence approaching x₀)
+
+They are **the same idea** expressed two different ways.
+
+---
+
+## The Final Line
+
+> "Each accumulation point can be approximated arbitrarily closely by points from A"
+
+This is the most human way to say it:
+
+| Concept | Plain meaning |
+|---|---|
+| x₀ is accumulation point | Points from A get as close to x₀ as you want |
+| Punctured neighbourhood | A zone around x₀ excluding x₀ itself |
+| Infinitely many points | The approximation never runs out of points |
+| lim xₙ = x₀ | The sequence of nearby points converges to x₀ |
+
+---
+
+## Why This Matters
+
+This slide is building the **bridge** between two chapters:
+
+```
+Sequences & their limits
+        ↕  same thing
+Accumulation points of sets
+```
+
+Understanding this bridge means you truly understand what "approaching" means — which is the entire foundation of calculus.
