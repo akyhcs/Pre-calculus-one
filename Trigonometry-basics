@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trigonometry Basics</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f3ec;
+  --ink: #1a1410;
+  --muted: #7a6f63;
+  --line: #d9d0c3;
+  --accent1: #c0392b; /* red */
+  --accent2: #2471a3; /* blue */
+  --accent3: #1e8449; /* green */
+  --accent4: #7d3c98; /* purple */
+  --accent5: #ca6f1e; /* orange */
+  --paper: #fffdf8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* grid paper background */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 28px 80px;
+  display: flex; flex-direction: column; gap: 60px;
+}
+
+/* ── Header ── */
+.header { text-align: center; }
+.header h1 {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
+  display: inline-block;
+  padding-bottom: 8px;
+}
+.header p {
+  margin-top: 12px;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ── Section ── */
+.section {
+  display: flex; flex-direction: column; gap: 20px;
+  animation: fadeIn 0.6s ease both;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.section:nth-child(2){animation-delay:0.05s}
+.section:nth-child(3){animation-delay:0.1s}
+.section:nth-child(4){animation-delay:0.15s}
+.section:nth-child(5){animation-delay:0.2s}
+
+.section-header {
+  display: flex; align-items: baseline; gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+.section-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── Right triangle SVG box ── */
+.triangle-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* ── Ratio cards ── */
+.ratio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.ratio-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex; flex-direction: column; gap: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.ratio-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.ratio-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.ratio-fraction {
+  display: flex; flex-direction: column; align-items: center;
+  font-size: 1rem;
+  gap: 2px;
+}
+.ratio-fraction .num { border-bottom: 1.5px solid currentColor; padding-bottom: 2px; width: 100%; text-align: center; }
+.ratio-fraction .den { width: 100%; text-align: center; }
+.ratio-memory {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 4px;
+}
+.rc1 { border-top: 3px solid var(--accent1); } .rc1 .ratio-name { color: var(--accent1); }
+.rc2 { border-top: 3px solid var(--accent2); } .rc2 .ratio-name { color: var(--accent2); }
+.rc3 { border-top: 3px solid var(--accent3); } .rc3 .ratio-name { color: var(--accent3); }
+.rc4 { border-top: 3px solid var(--accent1); } .rc4 .ratio-name { color: var(--accent1); }
+.rc5 { border-top: 3px solid var(--accent2); } .rc5 .ratio-name { color: var(--accent2); }
+.rc6 { border-top: 3px solid var(--accent3); } .rc6 .ratio-name { color: var(--accent3); }
+
+/* reciprocal note */
+.recip-note {
+  background: #fff8e1;
+  border: 1px solid #f9c74f55;
+  border-left: 4px solid #f9c74f;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  color: #5a4a00;
+}
+.recip-note strong { font-family: 'Space Mono', monospace; font-size: 0.8rem; }
+
+/* ── Standard values table ── */
+.trig-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.6rem, 1.6vw, 0.78rem);
+}
+.trig-table th {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 10px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+.trig-table td {
+  padding: 11px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s;
+}
+.trig-table tr:hover td { background: #f0ece4; }
+.trig-table tr:last-child td { border-bottom: none; }
+.trig-table td:first-child {
+  font-weight: 700;
+  background: #f0ece4;
+  color: var(--ink);
+}
+.trig-table .undef {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.65rem;
+}
+.trig-table .highlight { color: var(--accent1); font-weight: 700; }
+
+/* memory trick box */
+.memory-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent4);
+  border-radius: 8px;
+  padding: 18px 22px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.memory-box .trick-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.memory-box .trick-row {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}
+.memory-box .chip {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ── Identities ── */
+.identity-list { display: flex; flex-direction: column; gap: 16px; }
+.identity-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform 0.2s;
+}
+.identity-card:hover { transform: scale(1.01); }
+.identity-card .id-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+.identity-card .id-formula {
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+.identity-card .id-proof {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+.id1 { border-top: 3px solid var(--accent1); }
+.id1 .id-formula { background: #fdf2f2; color: var(--accent1); }
+.id2 { border-top: 3px solid var(--accent2); }
+.id2 .id-formula { background: #f0f6fc; color: var(--accent2); }
+.id3 { border-top: 3px solid var(--accent3); }
+.id3 .id-formula { background: #f0faf3; color: var(--accent3); }
+
+/* ── Radians ── */
+.radian-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media(max-width:480px){ .radian-row { grid-template-columns: 1fr; } }
+
+.formula-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform 0.2s;
+}
+.formula-box:hover { transform: translateY(-3px); }
+.formula-box .fb-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.formula-box .fb-formula {
+  font-size: 1.15rem;
+  color: var(--accent5);
+  letter-spacing: 0.04em;
+}
+.formula-box .fb-example {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.radian-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper);
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.radian-table th {
+  background: var(--accent5);
+  color: white;
+  padding: 11px 12px;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+.radian-table td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.radian-table tr:hover td { background: #fef9f0; }
+.radian-table tr:last-child td { border-bottom: none; }
+.radian-table .rad-val { color: var(--accent5); font-weight: 700; }
+
+/* unit circle hint */
+.circle-hint {
+  background: #f0f6fc;
+  border: 1px solid #aad4f5;
+  border-left: 4px solid var(--accent2);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  color: #1a3a5c;
+  line-height: 1.7;
+}
+
+/* insight strip */
+.insight {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 14px;
+  padding: 22px 28px;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+.insight strong { font-style: normal; font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; display: block; margin-bottom: 6px; color: #f9c74f; }
+
+/* soh-cah-toa */
+.sct {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+}
+.sct-chip {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Trigonometry Essentials</h1>
+    <p>Everything you need before CBSE Calculus — explained from scratch</p>
+  </div>
+
+  <!-- ══ 1. BASIC RATIOS ══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01 —</span>
+      <span class="section-title">Basic Ratios</span>
+    </div>
+
+    <!-- Triangle diagram -->
+    <div class="triangle-box">
+      <svg width="200" height="160" viewBox="0 0 200 160">
+        <!-- triangle -->
+        <polygon points="20,140 20,20 170,140" fill="#f7f3ec" stroke="#1a1410" stroke-width="2"/>
+        <!-- right angle box -->
+        <rect x="20" y="120" width="20" height="20" fill="none" stroke="#1a1410" stroke-width="1.5"/>
+        <!-- angle theta -->
+        <path d="M 170,140 A 30,30 0 0,0 149,123" fill="none" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="145" y="118" font-family="Crimson Pro,serif" font-style="italic" font-size="14" fill="#c0392b">θ</text>
+
+        <!-- labels -->
+        <!-- opposite (vertical) -->
+        <text x="2" y="88" font-family="Space Mono,monospace" font-size="11" fill="#c0392b" transform="rotate(-90,10,90)">Opposite (O)</text>
+        <!-- adjacent (horizontal) -->
+        <text x="72" y="158" font-family="Space Mono,monospace" font-size="11" fill="#2471a3">Adjacent (A)</text>
+        <!-- hypotenuse -->
+        <text x="75" y="68" font-family="Space Mono,monospace" font-size="11" fill="#1e8449" transform="rotate(-37,95,88)">Hypotenuse (H)</text>
+      </svg>
+
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:0.9rem;">
+        <div><span style="color:var(--accent1);font-weight:600">O</span> = side opposite to angle θ</div>
+        <div><span style="color:var(--accent2);font-weight:600">A</span> = side adjacent to angle θ</div>
+        <div><span style="color:var(--accent3);font-weight:600">H</span> = hypotenuse (longest side)</div>
+        <div style="margin-top:8px;font-style:italic;color:var(--muted);font-size:0.8rem">H² = O² + A² (Pythagoras)</div>
+      </div>
+    </div>
+
+    <!-- SOH-CAH-TOA -->
+    <div class="sct">
+      <div class="sct-chip" style="background:#fdf2f2;color:var(--accent1)">SOH: sin = O/H</div>
+      <div class="sct-chip" style="background:#f0f6fc;color:var(--accent2)">CAH: cos = A/H</div>
+      <div class="sct-chip" style="background:#f0faf3;color:var(--accent3)">TOA: tan = O/A</div>
+    </div>
+
+    <!-- 6 ratio cards -->
+    <div class="ratio-grid">
+      <div class="ratio-card rc1">
+        <div class="ratio-name">sin θ</div>
+        <div class="ratio-fraction" style="color:var(--accent1)">
+          <div class="num">Opposite</div>
+          <div class="den">Hypotenuse</div>
+        </div>
+        <div class="ratio-memory">O / H</div>
+      </div>
+      <div class="ratio-card rc2">
+        <div class="ratio-name">cos θ</div>
+        <div class="ratio-fraction" style="color:var(--accent2)">
+          <div class="num">Adjacent</div>
+          <div class="den">Hypotenuse</div>
+        </div>
+        <div class="ratio-memory">A / H</div>
+      </div>
+      <div class="ratio-card rc3">
+        <div class="ratio-name">tan θ</div>
+        <div class="ratio-fraction" style="color:var(--accent3)">
+          <div class="num">Opposite</div>
+          <div class="den">Adjacent</div>
+        </div>
+        <div class="ratio-memory">O / A &nbsp;=&nbsp; sin/cos</div>
+      </div>
+      <div class="ratio-card rc4">
+        <div class="ratio-name">cosec θ</div>
+        <div class="ratio-fraction" style="color:var(--accent1)">
+          <div class="num">Hypotenuse</div>
+          <div class="den">Opposite</div>
+        </div>
+        <div class="ratio-memory">1 / sin θ</div>
+      </div>
+      <div class="ratio-card rc5">
+        <div class="ratio-name">sec θ</div>
+        <div class="ratio-fraction" style="color:var(--accent2)">
+          <div class="num">Hypotenuse</div>
+          <div class="den">Adjacent</div>
+        </div>
+        <div class="ratio-memory">1 / cos θ</div>
+      </div>
+      <div class="ratio-card rc6">
+        <div class="ratio-name">cot θ</div>
+        <div class="ratio-fraction" style="color:var(--accent3)">
+          <div class="num">Adjacent</div>
+          <div class="den">Opposite</div>
+        </div>
+        <div class="ratio-memory">1 / tan θ &nbsp;=&nbsp; cos/sin</div>
+      </div>
+    </div>
+
+    <div class="recip-note">
+      <strong>RECIPROCAL PAIRS</strong><br>
+      sin ↔ cosec &nbsp;|&nbsp; cos ↔ sec &nbsp;|&nbsp; tan ↔ cot<br>
+      Each pair multiplies to <strong>1</strong>: &nbsp; sin θ × cosec θ = 1
+    </div>
+  </div>
+
+  <!-- ══ 2. STANDARD VALUES ══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02 —</span>
+      <span class="section-title">Standard Values Table</span>
+    </div>
+
+    <table class="trig-table">
+      <thead>
+        <tr>
+          <th>Angle</th>
+          <th>sin</th>
+          <th>cos</th>
+          <th>tan</th>
+          <th>cosec</th>
+          <th>sec</th>
+          <th>cot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0°</td>
+          <td>0</td><td>1</td><td>0</td>
+          <td class="undef">∞</td><td>1</td><td class="undef">∞</td>
+        </tr>
+        <tr>
+          <td>30°</td>
+          <td>1/2</td><td>√3/2</td><td>1/√3</td>
+          <td>2</td><td>2/√3</td><td>√3</td>
+        </tr>
+        <tr>
+          <td>45°</td>
+          <td class="highlight">1/√2</td><td class="highlight">1/√2</td><td>1</td>
+          <td>√2</td><td>√2</td><td>1</td>
+        </tr>
+        <tr>
+          <td>60°</td>
+          <td>√3/2</td><td>1/2</td><td>√3</td>
+          <td>2/√3</td><td>2</td><td>1/√3</td>
+        </tr>
+        <tr>
+          <td>90°</td>
+          <td>1</td><td>0</td><td class="undef">∞</td>
+          <td>1</td><td class="undef">∞</td><td>0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="memory-box">
+      <div class="trick-title">🧠 Memory Trick — sin row: √0/2 → √1/2 → √2/2 → √3/2 → √4/2</div>
+      <div class="trick-row">
+        <span class="chip" style="background:#fdf2f2;color:var(--accent1)">sin 0° = √0/2 = 0</span>
+        <span class="chip" style="background:#fdf2f2;color:var(--accent1)">sin 30° = √1/2 = 1/2</span>
+        <span class="chip" style="background:#fdf2f2;color:var(--accent1)">sin 45° = √2/2</span>
+        <span class="chip" style="background:#fdf2f2;color:var(--accent1)">sin 60° = √3/2</span>
+        <span class="chip" style="background:#fdf2f2;color:var(--accent1)">sin 90° = √4/2 = 1</span>
+      </div>
+      <div style="font-size:0.82rem;color:var(--muted);font-style:italic">
+        cos row = sin row reversed. &nbsp; tan = sin/cos.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 3. IDENTITIES ══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03 —</span>
+      <span class="section-title">Pythagorean Identities</span>
+    </div>
+
+    <div class="identity-list">
+
+      <div class="identity-card id1">
+        <div class="id-title">Identity 1 — the fundamental one</div>
+        <div class="id-formula">sin²θ + cos²θ = 1</div>
+        <div class="id-proof">
+          Proof from right triangle: O² + A² = H² (Pythagoras)<br>
+          Divide both sides by H²: (O/H)² + (A/H)² = 1 → sin²θ + cos²θ = 1 ✓
+        </div>
+      </div>
+
+      <div class="identity-card id2">
+        <div class="id-title">Identity 2 — divide by cos²θ</div>
+        <div class="id-formula">1 + tan²θ = sec²θ</div>
+        <div class="id-proof">
+          Start with sin²θ + cos²θ = 1<br>
+          Divide every term by cos²θ:<br>
+          sin²θ/cos²θ + 1 = 1/cos²θ &nbsp;→&nbsp; tan²θ + 1 = sec²θ
+        </div>
+      </div>
+
+      <div class="identity-card id3">
+        <div class="id-title">Identity 3 — divide by sin²θ</div>
+        <div class="id-formula">1 + cot²θ = cosec²θ</div>
+        <div class="id-proof">
+          Start with sin²θ + cos²θ = 1<br>
+          Divide every term by sin²θ:<br>
+          1 + cos²θ/sin²θ = 1/sin²θ &nbsp;→&nbsp; 1 + cot²θ = cosec²θ
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      <strong>WHY THESE MATTER IN CALCULUS</strong>
+      These identities let you simplify trig expressions before differentiating or integrating.
+      For example: d/dx(tan x) = sec²x — which you derive using sin²+cos²=1.
+      You'll use these almost every day once calculus starts.
+    </div>
+  </div>
+
+  <!-- ══ 4. RADIANS ══ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04 —</span>
+      <span class="section-title">Radians</span>
+    </div>
+
+    <div style="font-size:0.95rem;line-height:1.8;color:var(--muted)">
+      A <strong style="color:var(--ink)">radian</strong> is the angle made when the arc length equals the radius.
+      A full circle = 2π radians = 360°. Calculus <em>always</em> uses radians — never degrees.
+    </div>
+
+    <div class="radian-row">
+      <div class="formula-box">
+        <div class="fb-label">Degrees → Radians</div>
+        <div class="fb-formula">rad = deg × π/180</div>
+        <div class="fb-example">e.g. 90° × π/180 = π/2</div>
+      </div>
+      <div class="formula-box">
+        <div class="fb-label">Radians → Degrees</div>
+        <div class="fb-formula">deg = rad × 180/π</div>
+        <div class="fb-example">e.g. π/3 × 180/π = 60°</div>
+      </div>
+    </div>
+
+    <table class="radian-table">
+      <thead>
+        <tr>
+          <th>Degrees</th>
+          <th>Radians</th>
+          <th>Decimal ≈</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0°</td><td class="rad-val">0</td><td>0</td></tr>
+        <tr><td>30°</td><td class="rad-val">π/6</td><td>0.524</td></tr>
+        <tr><td>45°</td><td class="rad-val">π/4</td><td>0.785</td></tr>
+        <tr><td>60°</td><td class="rad-val">π/3</td><td>1.047</td></tr>
+        <tr><td>90°</td><td class="rad-val">π/2</td><td>1.571</td></tr>
+        <tr><td>120°</td><td class="rad-val">2π/3</td><td>2.094</td></tr>
+        <tr><td>180°</td><td class="rad-val">π</td><td>3.14159…</td></tr>
+        <tr><td>270°</td><td class="rad-val">3π/2</td><td>4.712</td></tr>
+        <tr><td>360°</td><td class="rad-val">2π</td><td>6.283</td></tr>
+      </tbody>
+    </table>
+
+    <div class="circle-hint">
+      <strong>Why radians in calculus?</strong><br>
+      The derivative of sin x is cos x <em>only when x is in radians</em>. In d
