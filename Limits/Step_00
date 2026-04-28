@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Limits</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d0d14;
+    color: #e8e4d9;
+    font-family: 'Crimson Pro', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 16px 60px;
+    gap: 28px;
+  }
+  h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: #f5f0e8;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .subtitle {
+    font-size: 1rem;
+    color: #888;
+    text-align: center;
+    font-style: italic;
+    margin-top: -18px;
+  }
+
+  /* canvas card */
+  .canvas-wrap {
+    background: #13131e;
+    border: 1px solid #2a2a3a;
+    border-radius: 16px;
+    padding: 16px;
+    width: min(680px, 96vw);
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  /* controls */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    width: min(680px, 96vw);
+  }
+  button {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #3a3a4a;
+    background: #1e1e2e;
+    color: #e8e4d9;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  button:hover { background: #2a2a3e; transform: translateY(-1px); }
+  button.active { background: #3b1f6e; border-color: #7c3aed; color: #c4b5fd; }
+
+  /* explanation cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    width: min(680px, 96vw);
+  }
+  .card {
+    background: #13131e;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .card .clabel {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .c1 { border-top: 3px solid #f59e0b; } .c1 .clabel { color: #f59e0b; }
+  .c2 { border-top: 3px solid #ec4899; } .c2 .clabel { color: #ec4899; }
+  .c3 { border-top: 3px solid #22d3ee; } .c3 .clabel { color: #22d3ee; }
+  .c4 { border-top: 3px solid #4ade80; } .c4 .clabel { color: #4ade80; }
+
+  .insight {
+    width: min(680px, 96vw);
+    background: #1a1a10;
+    border: 1px solid #ca8a0440;
+    border-left: 4px solid #f59e0b;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #d4b96a;
+  }
+  .insight strong { font-family: 'Space Mono', monospace; font-size: 0.72rem; display: block; margin-bottom: 4px; color: #fbbf24; }
+</style>
+</head>
+<body>
+
+<h1>lim f(x) = L &nbsp;as x→a</h1>
+<p class="subtitle">Press the buttons to see what happens step by step</p>
+
+<div class="canvas-wrap">
+  <canvas id="c" width="640" height="400"></canvas>
+</div>
+
+<div class="controls">
+  <button id="btnReset" class="active" onclick="setStep(0)">① Start</button>
+  <button id="btnA"     onclick="setStep(1)">② Show point a</button>
+  <button id="btnAppr"  onclick="setStep(2)">③ x approaches a</button>
+  <button id="btnL"     onclick="setStep(3)">④ f(x) approaches L</button>
+  <button id="btnHole"  onclick="setStep(4)">⑤ The hole at a</button>
+  <button id="btnAnim"  onclick="animate()">▶ Animate</button>
+</div>
+
+<div class="cards">
+  <div class="card c1">
+    <div class="clabel">The Curve</div>
+    The red curve is y = f(x). It shows how the output changes as x moves.
+  </div>
+  <div class="card c2">
+    <div class="clabel">Point a</div>
+    'a' is the x-value we are zooming in on. x never equals a — it only gets close.
+  </div>
+  <div class="card c3">
+    <div class="clabel">The Limit L</div>
+    L is the y-value the curve is heading toward as x approaches a from both sides.
+  </div>
+  <div class="card c4">
+    <div class="clabel">The Hole</div>
+    The open circle means f(a) may not exist — but the limit L still exists!
+  </div>
+</div>
+
+<div class="insight">
+  <strong>KEY INSIGHT</strong>
+  The limit is about the <em>journey</em>, not the <em>destination</em>.
+  f(a) might be undefined, or different from L — it doesn't matter.
+  What matters is: where is f(x) heading as x gets close to a?
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 640, H = 400;
+
+// coordinate system
+const ox = 80, oy = 320; // origin in canvas coords
+const scaleX = 70, scaleY = 55;
+
+function tx(x) { return ox + x * scaleX; }
+function ty(y) { return oy - y * scaleY; }
+
+// the function: a nice smooth curve with a hole at x=4
+// f(x) = 0.04(x-4)^3 + 0.3(x-4) + 2.5  — but f(4) is redefined elsewhere
+function f(x) {
+  return 0.035 * Math.pow(x - 4, 3) + 0.25 * (x - 4) + 2.5;
+}
+const a = 4;
+const L = f(a); // limit value (2.5)
+const fAtA = 1.1; // actual function value at a (the red dot — different from L)
+
+let step = 0;
+let animT = 0;
+let animFrame = null;
+
+const btns = ['btnReset','btnA','btnAppr','btnL','btnHole','btnAnim'];
+
+function setStep(s) {
+  step = s;
+  btns.forEach((id, i) => {
+    const b = document.getElementById(id);
+    if (b) b.classList.toggle('active', i === s);
+  });
+  draw(step, 0);
+}
+
+function draw(s, t) {
+  ctx.clearRect(0, 0, W, H);
+
+  // background
+  ctx.fillStyle = '#0d0d14';
+  ctx.fillRect(0, 0, W, H);
+
+  // grid
+  ctx.strokeStyle = '#1e1e2e';
+  ctx.lineWidth = 1;
+  for (let x = 0; x <= 8; x++) {
+    ctx.beginPath(); ctx.moveTo(tx(x), ty(-0.5)); ctx.lineTo(tx(x), ty(5)); ctx.stroke();
+  }
+  for (let y = 0; y <= 5; y++) {
+    ctx.beginPath(); ctx.moveTo(tx(0), ty(y)); ctx.lineTo(tx(8), ty(y)); ctx.stroke();
+  }
+
+  // axes
+  ctx.strokeStyle = '#4a4a5a';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(tx(0), ty(-0.3)); ctx.lineTo(tx(8), ty(-0.3)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(tx(0), ty(-0.3)); ctx.lineTo(tx(0), ty(5)); ctx.stroke();
+
+  // axis labels
+  ctx.fillStyle = '#666';
+  ctx.font = '13px Space Mono';
+  ctx.fillText('x', tx(7.8), ty(-0.55));
+  ctx.fillText('y', tx(0.1), ty(4.8));
+
+  // x-axis numbers
+  for (let x = 1; x <= 7; x++) {
+    if (x === a) continue;
+    ctx.fillStyle = '#444';
+    ctx.font = '11px Space Mono';
+    ctx.textAlign = 'center';
+    ctx.fillText(x, tx(x), ty(-0.6));
+  }
+
+  // draw the curve (skip hole at a)
+  ctx.strokeStyle = '#c0392b';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  let started = false;
+  for (let px = 0; px <= W; px++) {
+    const x = (px - ox) / scaleX;
+    if (x < 0.3 || x > 7.8) continue;
+    if (Math.abs(x - a) < 0.05) continue; // hole gap
+    const y = f(x);
+    if (!started) { ctx.moveTo(px, ty(y)); started = true; }
+    else ctx.lineTo(px, ty(y));
+  }
+  ctx.stroke();
+
+  // y=f(x) label
+  ctx.fillStyle = '#c0392b';
+  ctx.font = 'italic 14px Crimson Pro';
+  ctx.textAlign = 'left';
+  ctx.fillText('y = f(x)', tx(6.5), ty(3.4));
+
+  // ── Step 1+: show 'a' on x-axis ──
+  if (s >= 1) {
+    // vertical dashed line at x=a
+    ctx.strokeStyle = '#f59e0b55';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(tx(a), ty(-0.3)); ctx.lineTo(tx(a), ty(L)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // label 'a'
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold italic 16px Crimson Pro';
+    ctx.textAlign = 'center';
+    ctx.fillText('a', tx(a), ty(-0.75));
+  }
+
+  // ── Step 2+: x approaching arrows ──
+  if (s >= 2) {
+    const progress = Math.min(t, 1);
+    const xLeft  = a - 2.5 + 2.0 * progress;   // approaches a from left
+    const xRight = a + 2.5 - 2.0 * progress;   // approaches a from right
+
+    // left arrow
+    drawArrow(tx(xLeft + 0.3), ty(-0.3), tx(xLeft + 0.7), ty(-0.3), '#f59e0b');
+    // right arrow
+    drawArrow(tx(xRight - 0.3), ty(-0.3), tx(xRight - 0.7), ty(-0.3), '#f59e0b');
+
+    // moving dots on x-axis
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.arc(tx(xLeft), ty(-0.3), 5, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(tx(xRight), ty(-0.3), 5, 0, Math.PI*2); ctx.fill();
+
+    // labels
+    ctx.fillStyle = '#f59e0b99';
+    ctx.font = '11px Space Mono';
+    ctx.textAlign = 'center';
+    ctx.fillText('x→a', tx(xLeft - 0.3), ty(-0.9));
+    ctx.fillText('x→a', tx(xRight + 0.3), ty(-0.9));
+  }
+
+  // ── Step 3+: f(x) approaching L ──
+  if (s >= 3) {
+    const progress = Math.min(t, 1);
+    // horizontal dashed line at y=L
+    ctx.strokeStyle = '#22d3ee55';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(tx(0), ty(L)); ctx.lineTo(tx(a), ty(L)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // L label on y-axis
+    ctx.fillStyle = '#22d3ee';
+    ctx.font = 'bold italic 16px Crimson Pro';
+    ctx.textAlign = 'right';
+    ctx.fillText('L', tx(-0.15), ty(L) + 5);
+
+    // moving dots on curve approaching L
+    const xL = a - 2 + 1.5 * progress;
+    const xR = a + 2 - 1.5 * progress;
+    const yL = f(xL);
+    const yR = f(xR);
+
+    ctx.fillStyle = '#22d3ee';
+    ctx.beginPath(); ctx.arc(tx(xL), ty(yL), 5, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(tx(xR), ty(yR), 5, 0, Math.PI*2); ctx.fill();
+
+    // vertical lines from dots to L level
+    ctx.strokeStyle = '#22d3ee33';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(tx(xL), ty(yL)); ctx.lineTo(tx(xL), ty(L)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(tx(xR), ty(yR)); ctx.lineTo(tx(xR), ty(L)); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // ── Step 4+: the hole ──
+  if (s >= 4) {
+    // open circle at (a, L) — the limit
+    ctx.strokeStyle = '#22d3ee';
+    ctx.lineWidth = 2.5;
+    ctx.fillStyle = '#0d0d14';
+    ctx.beginPath(); ctx.arc(tx(a), ty(L), 7, 0, Math.PI*2);
+    ctx.fill(); ctx.stroke();
+
+    // filled dot at (a, fAtA) — actual value
+    ctx.fillStyle = '#ec4899';
+    ctx.beginPath(); ctx.arc(tx(a), ty(fAtA), 6, 0, Math.PI*2); ctx.fill();
+
+    // label for actual value
+    ctx.fillStyle = '#ec4899';
+    ctx.font = 'italic 13px Crimson Pro';
+    ctx.textAlign = 'left';
+    ctx.fillText('f(a) ≠ L', tx(a + 0.15), ty(fAtA) - 8);
+
+    // label for open circle
+    ctx.fillStyle = '#22d3ee';
+    ctx.font = 'italic 13px Crimson Pro';
+    ctx.textAlign = 'left';
+    ctx.fillText('limit = L', tx(a + 0.15), ty(L) - 10);
+  } else {
+    // just show open circle for steps < 4 (step 0–3 still show hole on curve)
+    ctx.strokeStyle = '#c0392b';
+    ctx.lineWidth = 2;
+    ctx.fillStyle = '#0d0d14';
+    ctx.beginPath(); ctx.arc(tx(a), ty(L), 6, 0, Math.PI*2);
+    ctx.fill(); ctx.stroke();
+  }
+
+  // big formula top-right
+  ctx.fillStyle = '#ffffff22';
+  ctx.font = 'bold 22px Space Mono';
+  ctx.textAlign = 'right';
+  ctx.fillText('lim f(x) = L', tx(7.9), ty(4.6));
+  ctx.fillStyle = '#ffffff44';
+  ctx.font = '13px Space Mono';
+  ctx.fillText('x → a', tx(7.9), ty(4.2));
+}
+
+function drawArrow(x1, y1, x2, y2, color) {
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  // arrowhead
+  const angle = Math.atan2(y2 - y1, x2 - x1);
+  ctx.beginPath();
+  ctx.moveTo(x2, y2);
+  ctx.lineTo(x2 - 8*Math.cos(angle-0.4), y2 - 8*Math.sin(angle-0.4));
+  ctx.lineTo(x2 - 8*Math.cos(angle+0.4), y2 - 8*Math.sin(angle+0.4));
+  ctx.closePath(); ctx.fill();
+}
+
+function animate() {
+  if (animFrame) cancelAnimationFrame(animFrame);
+  document.getElementById('btnAnim').classList.add('active');
+  let s = 0;
+  animT = 0;
+  const steps = [0, 1, 2, 3, 4];
+  let stepIdx = 0;
+  let frameCount = 0;
+
+  function loop() {
+    frameCount++;
+    if (frameCount % 2 === 0) animT += 0.025;
+
+    // update button highlights
+    btns.forEach((id, i) => {
+      const b = document.getElementById(id);
+      if (b) b.classList.toggle('active', i === stepIdx);
+    });
+
+    draw(steps[stepIdx], animT);
+
+    if (animT >= 1.0) {
+      animT = 0;
+      stepIdx++;
+      if (stepIdx >= steps.length) {
+        stepIdx = steps.length - 1;
+        document.getElementById('btnAnim').classList.remove('active');
+        return;
+      }
+    }
+    animFrame = requestAnimationFrame(loop);
+  }
+  animFrame = requestAnimationFrame(loop);
+}
+
+// initial draw
+draw(0, 0);
+</script>
+</body>
+</html>
+
