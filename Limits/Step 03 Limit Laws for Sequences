@@ -1,0 +1,30 @@
+**Extremely important: New limits from old limits.**
+
+**Theorem (Limit Laws for Sequences):** Given two convergent number sequences (aₙ) and (bₙ) s.t. aₙ → a and bₙ → b. Prove that:
+
+T1. if α, β ∈ ℝ then lim (αaₙ + βbₙ) = αa + βb.
+(n→∞)
+
+T2. lim (aₙbₙ) = ab.
+(n→∞)
+
+T3. if k ∈ ℕ⁺ then lim aₙᵏ = aᵏ.
+(n→∞)
+
+T4. if bₙ ≠ 0 for all n ∈ ℕ⁺ and b ≠ 0 then lim 1/bₙ = 1/b.
+(n→∞)
+
+T5. if bₙ ≠ 0 for all n ∈ ℕ⁺ and b ≠ 0 then lim aₙ/bₙ = a/b.
+(n→∞)
+
+T6. if k ∈ ℕ⁺ \ {1} then lim ᵏ√aₙ = ᵏ√a.
+(n→∞)
+If k is even, then we need the restriction: aₙ ≥ 0 for all n ∈ ℕ⁺; no restrictions needed for odd k.
+
+T7. if q ∈ ℚ and aₙ, a > 0, then lim aₙᵍ = aᵍ.
+(n→∞)
+
+T8. lim |aₙ| = |a|. Find an example showing that the converse implication is not true, i.e., that convergence of (|aₙ|) does not imply convergence of (aₙ).
+(n→∞)
+
+(See V21 for generalization of T1 (and T2) for the sum (product) of any number of sequences.)
