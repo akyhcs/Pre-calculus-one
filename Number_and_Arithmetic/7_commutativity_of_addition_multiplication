@@ -1,0 +1,39 @@
+## Commutative Law
+
+**"To commute = to switch places"**
+
+The order doesn't matter — you get the same result either way.
+
+---
+
+### For Addition
+
+**m + n = n + m** for all m, n ∈ ℕ
+
+The colored blocks show this visually:
+- Left side: 4 yellow + 2 pink = 6 blocks
+- Right side: 2 pink + 4 yellow = 6 blocks
+
+Same total, just switched around.
+
+**Example:** 3 + 5 = 5 + 3 = 8
+
+---
+
+### For Multiplication
+
+**mn = nm** for all m, n ∈ ℕ
+
+The grids show this visually:
+- Left grid: 4 wide × 6 tall = 24 squares
+- Right grid: 6 wide × 4 tall = 24 squares
+
+Same area, just rotated.
+
+**Example:** 4 × 6 = 6 × 4 = 24
+
+---
+
+### Key Insight
+
+The grid visualization is clever — rotating a rectangle doesn't change its area. That's exactly why multiplication is commutative. It gives you a **geometric proof** you can see, not just a rule to memorize.
