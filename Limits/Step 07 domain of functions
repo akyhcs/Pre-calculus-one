@@ -1,0 +1,46 @@
+# Yes! Exactly Right! 🎯
+
+## The Domain is defined by finding where the function is UNDEFINED
+
+---
+
+## For f₄(x) = (x-1)/(x²-1)
+
+**Step 1** → Set denominator = 0
+$$x^2 - 1 = 0$$
+
+**Step 2** → Solve
+$$x^2 = 1$$
+$$x = 1 \quad \text{and} \quad x = -1$$
+
+**Step 3** → These values make function UNDEFINED
+$$x \neq 1 \quad \text{and} \quad x \neq -1$$
+
+---
+
+## So Domain = Everything EXCEPT 1 and -1
+
+$$D_f = (-\infty, -1) \cup (-1, 1) \cup (1, +\infty)$$
+
+### Reading it simply:
+```
+All numbers    Skip -1    All numbers    Skip 1    All numbers
+up to -1         ↓        -1 to 1          ↓       after 1
+(−∞ to −1)  ∪ (−1, 1) ∪ (1, +∞)
+```
+
+---
+
+## In Short 💡
+
+| x value | Why excluded | What it creates |
+|---|---|---|
+| x = 1 | Makes denominator 0 | **Hole** |
+| x = -1 | Makes denominator 0 | **Asymptote** |
+| Everything else | Function works fine | **Domain** ✅ |
+
+---
+
+> **Simple Rule → Domain = All real numbers EXCEPT where denominator = 0** 📌
+
+Does that clear it up? 😊
