@@ -1,0 +1,79 @@
+# Turning Point in Absolute Value Equations
+
+---
+
+## What is a Turning Point? 📌
+
+> A **turning point** is the value of x where the expression **inside the absolute value = 0**
+
+It's called "turning point" because the absolute value function **changes direction** there!
+
+---
+
+## For |x - 1| = 2
+
+**Step 1** → Set inside = 0
+$$x - 1 = 0$$
+$$x = 1 ← \text{Turning Point!}$$
+
+---
+
+## Why is it called "Turning"? 🔄
+
+```
+When x < 1 → (x-1) is NEGATIVE
+             so |x-1| = -(x-1) = -x+1
+
+When x ≥ 1 → (x-1) is POSITIVE
+             so |x-1| = x-1
+```
+
+The function **turns/changes** its behaviour at x = 1!
+
+---
+
+## Visually on Number Line
+
+```
+←————————●————————→
+        x=1
+  Case 1    Case 2
+  x < 1     x ≥ 1
+|x-1|=      |x-1|=
+-x+1        x-1
+```
+
+---
+
+## Now Solving |x - 1| = 2
+
+### Case 1 (x < 1):
+
+$$-(x-1) = 2$$
+$$-x + 1 = 2$$
+$$x = -1 ✅$$
+(-1 < 1, so valid!)
+
+### Case 2 (x ≥ 1):
+$$x - 1 = 2$$
+$$x = 3 ✅$$
+(3 ≥ 1, so valid!)
+
+---
+
+## Final Answer
+$$x = -1 \quad \text{or} \quad x = 3$$
+
+---
+
+## General Rule 💡
+
+| Expression | Turning Point |
+|---|---|
+| \|x - 1\| | x = 1 |
+| \|x - 5\| | x = 5 |
+| \|x + 3\| | x = -3 |
+
+> **Always set the inside = 0 to find turning point!** 📌
+
+Would you like me to solve part b) and c) as well? 😊
