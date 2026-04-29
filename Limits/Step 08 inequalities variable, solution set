@@ -1,0 +1,99 @@
+# Intervals of Real Numbers — Full Explanation 😊
+
+---
+
+## The KEY difference — Brackets vs Parentheses
+
+| Symbol | Meaning | Includes endpoint? |
+|---|---|---|
+| **[ ]** Square bracket | CLOSED | ✅ YES included |
+| **( )** Round bracket | OPEN | ❌ NO not included |
+
+---
+
+## All Interval Types Explained
+
+### 1️⃣ Closed Interval [a, b]
+$$[a,b] = a \leq x \leq b$$
+```
+●————————●
+a                b
+```
+- **Both a and b are INCLUDED** ✅
+- The dots are FILLED ●
+
+---
+
+### 2️⃣ Half Open [a, b)
+$$[a,b) = a \leq x < b$$
+```
+●————————○
+a                b
+```
+- a included, b NOT included
+
+---
+
+### 3️⃣ Half Open (a, b]
+$$(a,b] = a < x \leq b$$
+```
+○————————●
+a                b
+```
+- a NOT included, b included
+
+---
+
+### 4️⃣ Open Interval (a, b)
+$$(a,b) = a < x < b$$
+```
+○————————○
+a                b
+```
+- **Neither a nor b included** ❌
+
+---
+
+### 5️⃣ Infinity Intervals
+$$[a, \infty) = a \leq x$$
+$$(a, \infty) = a < x$$
+$$(-\infty, b] = x \leq b$$
+$$(-\infty, b) = x < b$$
+
+> **Infinity ALWAYS gets ( ) round bracket** because infinity is never actually reached! ♾️
+
+---
+
+### 6️⃣ All Real Numbers
+$$(-\infty, \infty) = \mathbb{R}$$
+- Simply means **every number** exists here!
+
+---
+
+## Simple Memory Trick 🧠
+
+```
+
+[ ] = CLOSED door = you CAN enter (included)
+( ) = OPEN door   = you CANNOT enter (excluded)
+```
+
+---
+
+## Complete Summary Table
+
+| Interval | Meaning | a included? | b included? |
+|---|---|---|---|
+| [a, b] | a ≤ x ≤ b | ✅ | ✅ |
+| [a, b) | a ≤ x < b | ✅ | ❌ |
+| (a, b] | a < x ≤ b | ❌ | ✅ |
+| (a, b) | a < x < b | ❌ | ❌ |
+| [a, ∞) | a ≤ x | ✅ | — |
+| (a, ∞) | a < x | ❌ | — |
+| (-∞, b] | x ≤ b | — | ✅ |
+| (-∞, b) | x < b | — | ❌ |
+| (-∞, ∞) | all reals | — | — |
+
+---
+
+Does this make sense? 😊 This is actually the **prerequisite** you needed for understanding domains in Calculus!
