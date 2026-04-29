@@ -115,3 +115,42 @@ Factor denominator: (x-1)/[(x+1)(x-1)]
 | f₄ | x = -1 | (1, 1/2) |
 
 **Key rule:** If a factor cancels → **hole**. If it doesn't cancel → **vertical asymptote**.
+
+
+
+## YES — but a function can have BOTH at the same time!
+
+Look at **f₄** as the perfect example:
+
+$$f_4(x) = \frac{x-1}{x^2-1} = \frac{(x-1)}{(x+1)(x-1)}$$
+
+| Factor | What happened | Result |
+|---|---|---|
+| (x-1) | Cancelled with top | **HOLE at x = 1** |
+| (x+1) | Did NOT cancel | **ASYMPTOTE at x = -1** |
+
+### So f₄ has BOTH a hole AND an asymptote! ✅
+
+---
+
+## Simple way to remember 🧠
+
+Think of it like this:
+
+- **Hole** = the factor "escaped" by cancelling ✂️
+- **Asymptote** = the factor is "stuck" in the bottom, can never cancel 🚫
+
+---
+
+## All possibilities:
+
+| Situation | Example |
+|---|---|
+| Only asymptote(s) | f₁ |
+| Only hole(s) | f₂, f₃ |
+| **Both hole AND asymptote** | **f₄** |
+| Neither | a normal function like x+1 |
+
+---
+
+
