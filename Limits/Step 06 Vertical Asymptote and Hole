@@ -1,0 +1,117 @@
+
+
+---
+
+## First, understand the KEY RULE:
+
+> **Vertical Asymptote** = a value of x that makes the denominator = 0 and **does NOT cancel**
+>
+> **Hole** = a value of x that makes the denominator = 0 but **DOES cancel**
+
+---
+
+## What does "cancel" mean?
+
+If you have **(x-1)** on **both top and bottom**, they cancel out like this:
+
+$$\frac{(x-1)(x+1)}{(x-1)} = (x+1)$$
+
+Since it cancelled, there's a **hole**, not an asymptote.
+
+---
+
+## Let's do each function slowly:
+
+---
+
+### f₂(x) = (x² - 1)/(x - 1)
+
+**Step 1:** Factor the top
+- x² - 1 = **(x+1)(x-1)**
+
+**Step 2:** Rewrite
+$$\frac{(x+1)(x-1)}{(x-1)}$$
+
+**Step 3:** (x-1) is on top AND bottom → they **cancel**
+- Result: just **(x+1)**
+- So there's a **HOLE at x = 1** ✅
+- To find y: plug x=1 into (x+1) → y = 2
+- **Hole is at point (1, 2)**
+
+---
+
+### f₄(x) = (x-1)/(x² - 1)
+
+**Step 1:** Factor the bottom
+- x² - 1 = **(x+1)(x-1)**
+
+**Step 2:** Rewrite
+$$\frac{(x-1)}{(x+1)(x-1)}$$
+
+**Step 3:** (x-1) cancels → **HOLE at x = 1**
+- Remaining denominator: **(x+1)**
+- (x+1) = 0 when x = -1 → **VERTICAL ASYMPTOTE at x = -1** ✅
+
+---
+
+## Think of it this way 🧠
+
+| Situation | What happens |
+|---|---|
+| Factor only in **bottom** | Vertical Asymptote |
+| Factor on **top AND bottom** | Hole (they cancel) |
+
+---
+
+# Vertical Asymptotes and Holes
+
+Let me analyze all four functions:
+
+---
+
+## f₁(x) = 1/(x² - 1)
+
+Factor denominator: (x+1)(x-1)
+
+- **Vertical asymptotes at x = 1 and x = -1** (no cancellation)
+- No holes
+
+---
+
+## f₂(x) = (x² - 1)/(x - 1)
+
+Factor numerator: (x+1)(x-1)/(x-1)
+
+- **(x-1) cancels** → **Hole at x = 1** (where y = x+1 = 2, so hole at **(1, 2)**)
+- No vertical asymptote
+
+---
+
+## f₃(x) = (x² - 1)/(x + 1)
+
+Factor numerator: (x+1)(x-1)/(x+1)
+
+- **(x+1) cancels** → **Hole at x = -1** (where y = x-1 = -2, so hole at **(-1, -2)**)
+- No vertical asymptote
+
+---
+
+## f₄(x) = (x - 1)/(x² - 1)
+
+Factor denominator: (x-1)/[(x+1)(x-1)]
+
+- **(x-1) cancels** → **Hole at x = 1** (where y = 1/(x+1) = 1/2, so hole at **(1, 1/2)**)
+- **Vertical asymptote at x = -1** (doesn't cancel)
+
+---
+
+### Quick Summary Table
+
+| Function | Vertical Asymptote | Hole |
+|---|---|---|
+| f₁ | x = 1, x = -1 | None |
+| f₂ | None | (1, 2) |
+| f₃ | None | (-1, -2) |
+| f₄ | x = -1 | (1, 1/2) |
+
+**Key rule:** If a factor cancels → **hole**. If it doesn't cancel → **vertical asymptote**.
