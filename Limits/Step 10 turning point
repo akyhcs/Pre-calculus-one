@@ -1,0 +1,95 @@
+# Part b) |x-1| + |x-5| = 2
+
+---
+
+## Step 1 — Find Turning Points
+
+Two absolute values → Two turning points!
+
+$$|x-1| → x = 1$$
+$$|x-5| → x = 5$$
+
+---
+
+## Step 2 — Three Cases on Number Line
+
+```
+←————●————————●————→
+     1                5
+
+Case 1    Case 2    Case 3
+ x < 1   1≤x<5      x ≥ 5
+```
+
+---
+
+## Step 3 — Solve Each Case
+
+### Case 1 (x < 1):
+$$x-1 < 0 \quad x-5 < 0$$
+$$|x-1| = -x+1 \quad |x-5| = -x+5$$
+
+$$(-x+1) + (-x+5) = 2$$
+$$-2x + 6 = 2$$
+$$-2x = -4$$
+$$x = 2 ❌$$
+(x=2 is NOT < 1, so **invalid!**)
+
+---
+
+### Case 2 (1 ≤ x < 5):
+$$x-1 ≥ 0 \quad x-5 < 0$$
+$$|x-1| = x-1 \quad |x-5| = -x+5$$
+
+$$(x-1) + (-x+5) = 2$$
+$$4 = 2 ❌$$
+
+This is **never true!** BUT wait...
+
+> The left side always equals **4** in this range, but we need **2**. So **no solution here** either... 
+
+Hmm! Let's check — actually 4 = 2 is impossible ❌
+
+---
+
+### Case 3 (x ≥ 5):
+$$x-1 > 0 \quad x-5 ≥ 0$$
+$$|x-1| = x-1 \quad |x-5| = x-5$$
+
+$$(x-1) + (x-5) = 2$$
+$$2x - 6 = 2$$
+$$2x = 8$$
+$$x = 4 ❌$$
+(x=4 is NOT ≥ 5, so **invalid!**)
+
+---
+
+## Final Answer 📌
+
+> **No solution exists!** ∅
+
+---
+
+## Why? Intuition 💡
+
+```
+|x-1| = distance from x to 1
+|x-5| = distance from x to 5
+
+Distance between 1 and 5 = 4
+
+So |x-1| + |x-5| ≥ 4 ALWAYS!
+
+It can NEVER equal 2 (which is less than 4)
+```
+
+---
+
+## Key Insight 🧠
+
+| Distance between turning points | Minimum possible sum |
+|---|---|
+| \|5 - 1\| = 4 | Sum is always ≥ 4 |
+| We need sum = 2 | 2 < 4 → Impossible! |
+
+Shall I solve part c) now? 😊
