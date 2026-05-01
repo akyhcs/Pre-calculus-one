@@ -1,0 +1,137 @@
+Great topic! This is about **absolute value inequalities**! Let me explain everything step by step 😊
+
+---
+
+## First: What is Absolute Value?
+
+```
+|x| = distance from x to zero
+
+|3|  = 3  (3 steps from 0)
+|-3| = 3  (3 steps from 0)
+```
+
+```
+←————•————————0————————•————→
+    -3                  3
+     |←——3 units——→|←——3 units——→|
+```
+
+---
+
+## The 3 Cases with d
+
+Think of d as a **boundary distance** from zero:
+
+```
+←————•————————0————————•————→
+    -d                  d
+```
+
+---
+
+### Case 1: |x| < d (INSIDE)
+
+```
+←————•————————0————————•————→
+    -d    ←——zone——→    d
+
+x must be BETWEEN -d and d
+→ -d < x < d
+→ x ∈ (-d, d)
+```
+
+**Example: |x| < 3**
+```
+←————•————————0————————•————→
+    -3    ←——✅——→      3
+Solution: -3 < x < 3
+```
+
+---
+
+### Case 2: |x| = d (EXACTLY ON BOUNDARY)
+
+```
+←————•————————0————————•————→
+    -d                  d
+     ↑                  ↑
+  x=-d    OR         x=d
+
+→ x ∈ {-d, d}
+```
+
+**Example: |x| = 3**
+```
+x = -3 or x = 3 (just 2 points!)
+```
+
+---
+
+### Case 3: |x| > d (OUTSIDE)
+
+```
+←——✅——•————————0————————•——✅——→
+      -d                  d
+
+x is on the OUTSIDE!
+→ x < -d  OR  x > d
+→ x ∈ (-∞,-d) ∪ (d,∞)
+```
+
+**Example: |x| > 3**
+```
+←——✅——•————————0————————•——✅——→
+      -3                  3
+x < -3  OR  x > 3
+```
+
+---
+
+## All 3 Together
+
+```
+|x| < d  →  INSIDE  ←——zone——→
+             -d          d
+
+|x| = d  →  BOUNDARY  •        •
+             -d          d
+
+|x| > d  →  OUTSIDE ←•        •→
+             -d          d
+```
+
+---
+
+## Memory Trick 🎯
+
+```
+< (less than)    → INSIDE  → AND  (-d < x < d)
+> (greater than) → OUTSIDE → OR   (x<-d or x>d)
+```
+
+---
+
+## Special Case ⚠️
+
+When **d < 0** (negative boundary):
+
+```
+|x| < d  → NO SOLUTION ❌
+(distance can never be negative!)
+
+|x| > d  → ALL real numbers ✅
+(every distance is greater than negative!)
+```
+
+---
+
+## Summary Table
+
+| Inequality | Meaning | Solution |
+|------------|---------|----------|
+| \|x\| < d | Inside | -d < x < d |
+| \|x\| = d | Boundary | x = ±d |
+| \|x\| > d | Outside | x<-d or x>d |
+
+Want me to solve some example problems using these rules? 😊
