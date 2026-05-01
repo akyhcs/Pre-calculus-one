@@ -1,0 +1,97 @@
+---
+
+## Example: |x−5| − |x−1| = 2
+
+### The Number Line Setup
+
+```
+←————————•————————————•————————→
+        x=1                x=5
+
+  Case1  |    Case 2    |  Case 3
+  x < 1  |  1 ≤ x < 5  |  x ≥ 5
+```
+
+---
+
+## What Happens in Each Case
+
+### Case 1: x < 1 (LEFT of both points)
+```
+←——[x]——•————————————•————————→
+        x=1          x=5
+
+|x-1| = -(x-1)  [x is LEFT of 1, so negative]
+|x-5| = -(x-5)  [x is LEFT of 5, so negative]
+```
+Equation becomes:
+-(x-5) - -(x-1) = 2
+→ 4 = 2 ❌ **No solution**
+
+---
+
+### Case 2: 1 ≤ x < 5 (BETWEEN the points)
+```
+←————————•——————[x]——•————————→
+        x=1          x=5
+
+|x-1| = (x-1)   [x is RIGHT of 1, so positive]
+|x-5| = -(x-5)  [x is LEFT of 5, so negative]
+```
+Equation becomes:
+-(x-5) - (x-1) = 2
+-x+5-x+1 = 2
+-2x = -4 → **x = 2** ✅
+
+```
+←————————•——[x=2]————•————————→
+        x=1          x=5
+        
+Distance to 1 = 1 unit
+Distance to 5 = 3 units
+Difference    = 2 ✓
+```
+
+---
+
+### Case 3: x ≥ 5 (RIGHT of both points)
+```
+←————————•————————————•——[x]——→
+        x=1          x=5
+
+|x-1| = (x-1)  [x is RIGHT of 1, positive]
+|x-5| = (x-5)  [x is RIGHT of 5, positive]
+```
+Equation becomes:
+(x-5) - (x-1) = 2
+→ -4 = 2 ❌ **No solution**
+
+---
+
+## Final Picture
+```
+←————————•——[★]———————•————————→
+        x=1  x=2     x=5
+
+★ = Solution!
+
+From x=2:
+|←1 unit→|←——3 units——→|
+   to 1          to 5
+
+3 - 1 = 2 ✓
+```
+
+---
+
+## The Golden Rule 🔑
+
+| Region | x−1 sign | x−5 sign |
+|--------|----------|----------|
+| x < 1 | − | − |
+| 1≤x<5 | + | − |
+| x ≥ 5 | + | + |
+
+The sign **flips** every time you cross a critical point!
+
+Want to try one yourself now? 😊
