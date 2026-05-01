@@ -1,0 +1,209 @@
+I can see the equation is **1 + |x+1| − |x−2| = ?** with multiple right-hand side versions.
+
+---
+
+## Step 1: Find Critical Points
+
+- |x+1| = 0 → x = **−1**
+- |x−2| = 0 → x = **2**
+
+---
+
+## Step 2: Number Line with Cases
+
+```
+←————————•————————————•————————→
+        x=-1          x=2
+
+  Case 1  |   Case 2   |  Case 3
+  x < -1  | -1 ≤ x < 2 |  x ≥ 2
+```
+
+---
+
+## Step 3: Signs in Each Case
+
+```
+←——[−,−]——•——[+,−]————•——[+,+]——→
+         x=-1         x=2
+
+(x+1):  −      |      +      |     +
+(x-2):  −      |      −      |     +
+```
+
+---
+
+## Step 4: Rewrite Without Absolutes
+
+| Case | |x+1| | |x−2| |
+|------|--------|--------|
+| Case 1 (x<−1) | −(x+1) | −(x−2) |
+| Case 2 (−1≤x<2) | +(x+1) | −(x−2) |
+| Case 3 (x≥2) | +(x+1) | +(x−2) |
+
+---
+
+## Step 5: Solve Each Case
+
+### Case 1 (x < −1):
+```
+1 + [-(x+1)] - [-(x-2)] = ?
+1 - x - 1 + x - 2 = ?
+-2 = ?
+```
+The left side **simplifies to a constant −2!**
+This means the expression equals **−2 for ALL x < −1**
+
+---
+
+### Case 2 (−1 ≤ x < 2):
+```
+1 + [+(x+1)] - [-(x-2)] = ?
+1 + x + 1 + x - 2 = ?
+2x = ?
+```
+Expression equals **2x** in this region
+
+```
+←————————•——————————•————————→
+        x=-1       x=2
+        
+At x=-1: 2(-1) = -2
+At x=2:  2(2)  = 4
+         
+Rises from -2 to 4 linearly 📈
+```
+
+---
+
+### Case 3 (x ≥ 2):
+```
+1 + [+(x+1)] - [+(x-2)] = ?
+1 + x + 1 - x + 2 = ?
+4 = ?
+```
+Expression equals **constant 4 for ALL x ≥ 2!**
+
+---
+
+## Step 6: Full Picture on Number Line
+
+```
+←————————•————————————•————————→
+        x=-1          x=2
+
+  = -2   |  increases  |   = 4
+(flat)   |  from -2→4  | (flat)
+         |   = 2x      |
+```
+
+---
+
+## Summary Table
+
+| Region | Expression simplifies to |
+|--------|--------------------------|
+| x < −1 | **−2** (constant) |
+| −1 ≤ x < 2 | **2x** (linear) |
+| x ≥ 2 | **4** (constant) |
+
+So the full expression **1 + |x+1| − |x−2|** behaves like a **flat line, then rising, then flat again!** 📊
+
+No! We only found what the **left side simplifies to** in each case. We didn't solve for the specific right-hand sides yet!
+
+Let me now solve all 3 equations:
+
+---
+
+## What We Know (Left Side)
+
+```
+←————————•————————————•————————→
+        x=-1          x=2
+
+  = -2   |    = 2x    |   = 4
+```
+
+---
+
+## Equation 1: 1 + |x+1| − |x−2| = x+2
+
+### Case 1 (x < −1): −2 = x+2
+```
+-2 = x + 2
+x = -4  ✅ (-4 < -1 ✓)
+```
+
+### Case 2 (−1 ≤ x < 2): 2x = x+2
+```
+2x = x + 2
+x = 2  ❌ (2 is NOT in [-1, 2) ✗)
+```
+
+### Case 3 (x ≥ 2): 4 = x+2
+```
+4 = x + 2
+x = 2  ✅ (2 ≥ 2 ✓)
+```
+
+### ✅ Answer: x = −4 or x = 2
+
+---
+
+## Equation 2: 1 + |x+1| − |x−2| = x+3
+
+### Case 1 (x < −1): −2 = x+3
+```
+-2 = x + 3
+x = -5  ✅ (-5 < -1 ✓)
+```
+
+### Case 2 (−1 ≤ x < 2): 2x = x+3
+```
+2x = x + 3
+x = 3  ❌ (3 is NOT in [-1, 2) ✗)
+```
+
+### Case 3 (x ≥ 2): 4 = x+3
+```
+4 = x + 3
+x = 1  ❌ (1 is NOT ≥ 2 ✗)
+```
+
+### ✅ Answer: x = −5 only
+
+---
+
+## Equation 3: 1 + |x+1| − |x−2| = 2x
+
+### Case 1 (x < −1): −2 = 2x
+```
+-2 = 2x
+x = -1  ❌ (-1 is NOT < -1 ✗)
+```
+
+### Case 2 (−1 ≤ x < 2): 2x = 2x
+```
+2x = 2x
+0 = 0  ✅ TRUE FOR ALL x in [-1, 2)!
+```
+
+### Case 3 (x ≥ 2): 4 = 2x
+```
+4 = 2x
+x = 2  ✅ (2 ≥ 2 ✓)
+```
+
+### ✅ Answer: All x in **[−1, 2]** (entire interval!)
+
+---
+
+## Final Summary
+
+| Equation | Answer |
+|----------|--------|
+| = x+2 | x = −4 or x = 2 |
+| = x+3 | x = −5 only |
+| = 2x | **All x in [−1, 2]** |
+
+
