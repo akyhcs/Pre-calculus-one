@@ -1,0 +1,83 @@
+Great observation! Let me explain why we write **1 ≤ x < 5** and not **1 ≤ x ≤ 5**.
+
+---
+
+## The Rule of Boundary Points
+
+Each critical point **belongs to exactly ONE case** — we can't have it in two cases at the same time!
+
+---
+
+## Think of it like rooms in a house 🏠
+
+```
+←————————•————————————•————————→
+        x=1          x=5
+
+  Room 1  | Room 2      | Room 3
+  x < 1   | 1 ≤ x < 5  | x ≥ 5
+```
+
+> x=1 belongs to Room 2 (left boundary)
+> x=5 belongs to Room 3 (left boundary)
+
+**Every point must be in exactly ONE room!**
+
+---
+
+## What actually happens AT x=5?
+
+```
+At x=5:
+|x-5| = |5-5| = 0
+```
+
+Zero is **neither positive nor negative!**
+
+So at x=5 exactly, the expression (x-5) = 0, which means it doesn't matter whether we write + or − because:
+
+```
++(5-5) = 0
+-(5-5) = 0
+```
+**Both give the same answer!** So x=5 is assigned to Case 3 by convention.
+
+---
+
+## Visual Proof
+
+```
+Case 2 ends:        Case 3 starts:
+x approaches 5      x = 5 exactly
+    ↓                    ↓
+←———•————————————[→•←]————————→
+   x=1          x=5
+
+        NO GAP!
+        NO OVERLAP!
+```
+
+---
+
+## The Pattern Always Follows This 🔑
+
+```
+Case 1:  x < 1        (open at 1)
+Case 2:  1 ≤ x < 5    (closed at 1, open at 5)
+Case 3:  x ≥ 5        (closed at 5)
+```
+
+Each **opening bracket** of one case matches the **closing bracket** of the previous!
+
+---
+
+## Simple Way to Remember
+
+| Point | Excluded from LEFT case | Included in RIGHT case |
+|-------|------------------------|----------------------|
+| x=1 | Case 1 (x<1) | Case 2 (x≥1) |
+| x=5 | Case 2 (x<5) | Case 3 (x≥5) |
+
+> Think of it as: **each critical point starts a new case!** 🎯
+
+
