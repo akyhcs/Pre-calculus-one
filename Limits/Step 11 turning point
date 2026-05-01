@@ -94,4 +94,92 @@ From x=2:
 
 The sign **flips** every time you cross a critical point!
 
-Want to try one yourself now? 😊
+Excellent question! This is a very common confusion. Let me explain clearly.
+
+---
+
+## For a SINGLE absolute value
+```
+|x - 3| = 5
+```
+Yes, only **2 cases:**
+```
+←————————•————————→
+        x=3
+
+Case 1: x < 3  → -(x-3)
+Case 2: x ≥ 3  → (x-3)
+```
+Simple! Just 2 regions.
+
+---
+
+## But when you have TWO absolute values
+```
+|x-1| and |x-5|
+```
+Each one has **its own critical point**, so together they create **3 regions:**
+
+```
+←————————•————————————•————————→
+        x=1          x=5
+```
+
+Think of it like **2 fences** dividing a field into **3 sections:**
+
+```
+  SECTION 1  | SECTION 2  | SECTION 3
+   x < 1     | 1 ≤ x < 5  |  x ≥ 5
+             |            |
+          fence 1      fence 2
+```
+
+---
+
+## The Simple Rule 🔑
+
+> **Number of cases = Number of critical points + 1**
+
+| Critical Points | Cases |
+|----------------|-------|
+| 1 point | 2 cases |
+| 2 points | 3 cases |
+| 3 points | 4 cases |
+
+---
+
+## Why do we need all 3 regions?
+
+Because the **signs change** at each critical point:
+
+```
+←————————•————————————•————————→
+        x=1          x=5
+
+SECTION 1    SECTION 2    SECTION 3
+(x-1) = −    (x-1) = +    (x-1) = +
+(x-5) = −    (x-5) = −    (x-5) = +
+```
+
+See how between x=1 and x=5, the **two expressions have DIFFERENT signs?**
+
+That middle region behaves differently from both sides, so it **must** be its own case!
+
+---
+
+## Quick Visual Summary
+```
+        x=1 is the     x=5 is the
+        "switch" for   "switch" for
+         |x-1|          |x-5|
+            ↓               ↓
+←———[−,−]———•———[+,−]———————•———[+,+]———→
+          x=1             x=5
+  
+  Both negative  Mixed signs  Both positive
+  = Case 1       = Case 2     = Case 3
+```
+
+The middle case exists because **one expression flipped but the other hasn't yet!** 🎯
+
+
