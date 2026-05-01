@@ -1,0 +1,126 @@
+
+
+---
+
+## What is Slope Exactly?
+
+```
+Slope = How steep the line is
+
+m = Δy = rise (vertical change)
+    Δx   run  (horizontal change)
+```
+
+---
+
+## The Picture Explained
+
+```
+(x₁,y₁) •
+          \  ↑ this distance
+           \   = y₁ - y₂ (rise)
+            \
+             \ • (x₂,y₂)
+←————————————→
+this distance
+= x₁ - x₂ (run)
+```
+
+---
+
+## The Formula
+
+```
+m = y₁ - y₂
+    ————————
+    x₁ - x₂
+```
+
+---
+
+## Why Two Versions?
+
+The slide shows both are **equal:**
+
+```
+Version 1:      Version 2:
+y₁ - y₂    =   y₂ - y₁
+————————        ————————
+x₁ - x₂        x₂ - x₁
+```
+
+Because:
+```
+y₁-y₂   -(y₂-y₁)   y₂-y₁
+—————— = ————————— = ——————
+x₁-x₂   -(x₂-x₁)   x₂-x₁
+```
+
+**Negatives cancel!** So order doesn't matter! ✅
+
+---
+
+## Simple Example 🚶
+
+Two points: (1, 2) and (3, 6)
+
+```
+y↑
+6|          •(3,6)
+4|        /
+2|    •(1,2)
+0|____________→ x
+  0   1   2   3
+
+rise = 6-2 = 4
+run  = 3-1 = 2
+
+m = 4/2 = 2
+```
+
+For every 1 step right → 2 steps up!
+
+---
+
+## Connecting to Walking Example 🚶
+
+```
+Point 1 = (1hr, 2km)
+Point 2 = (3hr, 6km)
+
+m = 6-2 = 4 = 2 km/h
+    3-1   2
+
+Speed = slope! 🎯
+```
+
+---
+
+## Key Rules to Remember
+
+```
+m > 0  → line goes UP ↗
+m < 0  → line goes DOWN ↘
+m = 0  → flat line →
+m = ∞  → vertical line ↑
+```
+
+---
+
+## In Calculus 🔮
+
+```
+Two points far apart:
+m = y₂-y₁  (approximate slope)
+    x₂-x₁
+
+Bring points CLOSER and CLOSER:
+m becomes MORE and MORE accurate
+
+Points touch = EXACT slope
+= DERIVATIVE! 🎯
+```
+
+This is **exactly** what calculus does! The formula you see here becomes the foundation of derivatives! 🤯
+
+Want me to show a numerical example with actual numbers? 😊
