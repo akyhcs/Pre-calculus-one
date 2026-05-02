@@ -1,0 +1,153 @@
+The highlighted topic is **|x − a| < d** and **|x − a| > d**. Here's how to solve both:
+
+---
+
+## The Key Idea
+
+These inequalities ask: *how far is x from a?* The number **d** is the distance, and **a** is the center point.
+
+---
+
+## Case 1: |x − a| < d (less than)
+
+This means x is **within** distance d of a.
+
+**Solution:** −d < x − a < d → **a − d < x < a + d**
+
+The solution is the open interval **(a − d, a + d)**
+
+**Geometrical interpretation:** All points x that lie **between** (a − d) and (a + d) on the number line.
+
+---
+
+## Case 2: |x − a| > d (greater than)
+
+This means x is **farther than** distance d from a.
+
+**Solution:** x − a < −d **or** x − a > d → **x < a − d or x > a + d**
+
+The solution is **(−∞, a − d) ∪ (a + d, +∞)**
+
+**Geometrical interpretation:** All points x that lie **outside** the interval, to the left of (a − d) or to the right of (a + d).
+
+---
+
+## Quick Example
+
+Solve |x − 3| < 2:
+- a = 3, d = 2
+- Solution: 3 − 2 < x < 3 + 2 → **1 < x < 5**
+
+Solve |x − 3| > 2:
+- Solution: **x < 1 or x > 5**
+
+---
+
+The geometric picture to remember: **a is the center**, **d is the radius**, and < gives you the inside while > gives you the outside
+.
+Sure! Let me cover all the unhighlighted topics:
+
+---
+
+## 1. |x| < d and |x| > d
+
+This is the simplest case where the center is **0**.
+
+**|x| < d** → x is within distance d from 0
+- Solution: **−d < x < d** → interval **(−d, d)**
+- 📍 Geometry: all points between −d and d on the number line
+
+**|x| > d** → x is farther than d from 0
+- Solution: **x < −d or x > d**
+- 📍 Geometry: all points **outside** −d and d
+
+---
+
+## 2. |f(x)| < d and |f(x)| > d
+
+Same rules, but now you solve for the **expression** first, then solve the resulting inequality.
+
+**|f(x)| < d** → **−d < f(x) < d**
+- Solve the compound inequality for x
+
+**|f(x)| > d** → **f(x) < −d or f(x) > d**
+- Solve each inequality separately for x
+
+**Example:** |2x + 1| < 5
+- −5 < 2x + 1 < 5
+- −6 < 2x < 4
+- **−3 < x < 2**
+
+---
+
+## 3. Linear inequality with more than one absolute value
+
+Example: |x + 1| + |x − 2| < 5
+
+**Method — Critical Points:**
+1. Find where each absolute value = 0 → x = −1 and x = 2
+2. These split the number line into **3 regions**:
+   - x < −1
+   - −1 ≤ x < 2
+   - x ≥ 2
+3. Remove the absolute values differently in each region and solve
+4. Take the **union** of valid solutions
+
+📍 **Geometry:** Each absolute value represents a **distance**, so |x + 1| + |x − 2| is the *sum of distances* from x to −1 and to 2.
+
+---
+
+The big picture progression is:
+> |x| → |f(x)| → |x − a| → multiple absolute values
+each step adding a layer of complexity!
+
+This is the **formal (epsilon-delta) definition of a limit** — one of the most important concepts in calculus!
+
+---
+
+## The Definition
+
+$$\lim_{x \to a} f(x) = L$$
+
+Means: **∀ε > 0, ∃δ > 0, ∀x ∈ D_f:**
+$$0 < |x - a| < \delta \Rightarrow |f(x) - L| < \varepsilon$$
+
+---
+
+## Breaking It Down
+
+**The two highlighted conditions are the heart of it:**
+
+### 🟨 0 < |x − a| < δ (x is δ-close to a)
+- x is within distance **δ** of **a** on the x-axis
+- The **0 <** part means x ≠ a (we don't care what happens *at* a, only *near* it)
+- On the graph: x lies in the interval **(a − δ, a + δ)**
+
+### 🟪 |f(x) − L| < ε (f(x) is ε-close to L)
+- The output f(x) is within distance **ε** of **L** on the y-axis
+- On the graph: f(x) lies in the band **(L − ε, L + ε)**
+
+---
+
+## Reading the Graph
+
+- The **green box** represents the "challenge zone" — if x stays inside (a−δ, a+δ), then f(x) must stay inside (L−ε, L+ε)
+- **ε** controls how tight the y-band is
+- **δ** controls how tight the x-window is
+
+---
+
+## The Game Analogy
+
+Think of it as a challenge:
+1. Someone gives you any tiny **ε > 0** (how close f(x) must be to L)
+2. You must find a **δ > 0** (how close x must be to a) that makes it work
+3. If you can **always** win this game → the limit exists and equals L
+
+---
+
+## Key Takeaway
+
+> "f(x) can get **arbitrarily close** (ε-close) to L, if the arguments x are **close enough** (δ-close) to a."
+
+The absolute value inequalities from the previous lesson are exactly what make this definition precise! That's why they were taught first.
